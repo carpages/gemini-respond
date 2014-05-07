@@ -4,7 +4,7 @@
     {"name": "Matt Rose", "email": "matt@mattrose.ca"}
   ],
   "dependencies": {
-    "jquery-loader": "ssh://git@stash.carpages.ca/gem/jquery-loader.git#0.1.x",
+    "jquery-loader": "ssh://git@stash.carpages.ca/gem/jquery-loader.git#1",
     "underscore": "1.6.x"
   }
 }
