@@ -55,6 +55,26 @@ define(['jquery-loader', 'underscore'], function($, _){
   };
 
   /**
+   * Get a list of sorted breakpoints by screen size
+   *
+   * @method
+   * @name jquery.respond#sortedBreakpoints
+   * @return {array} Array of sorted breakpoints by screen size
+  **/
+  plugin.sortedBreakpoints = function(){
+    return _.sortBy(
+      _.map(plugin.breakpoints, function(size, screen){
+        return {
+          size: size,
+          screen: screen
+        };
+      }),
+      function(bp){return bp.screen;}
+    );
+  };
+
+
+  /**
    * Get the screen size based on Gemini naming conventions
    *
    * @method
@@ -65,9 +85,9 @@ define(['jquery-loader', 'underscore'], function($, _){
     var returnScreen,
         width = $window.width();
 
-    _.each(plugin.breakpoints, function(point, scrn){
-      if(point < width){
-        returnScreen = scrn;
+    _.each(plugin.sortedBreakpoints(), function(bp){
+      if(bp.size < width){
+        returnScreen = bp.screen;
       }
     });
 
