@@ -94,6 +94,18 @@ define(['jquery-loader', 'underscore'], function($, _){
     return returnScreen;
   };
 
+  /**
+   * Check for a certain screen size or higher
+   *
+   * @method
+   * @name jquery.respond#isScreen
+   * @param {string} screen Screen size
+   * @return {boolean} Whether the screen is that size or larger
+  **/
+  plugin.isScreen = function(screen){
+    return $window.width() >= plugin.breakpoints[screen];
+  };
+
   // Cache of the last registered width
   var _width = $window.width();
 
