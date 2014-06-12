@@ -1,10 +1,9 @@
 {
-  "name": "jquery-respond",
+  "name": "gemini-respond",
   "authors": [
     {"name": "Matt Rose", "email": "matt@mattrose.ca"}
   ],
   "dependencies": {
-    "jquery-loader": "ssh://git@stash.carpages.ca/gem/jquery-loader.git",
-    "underscore": "1.6.x"
+    "gemini-loader": "ssh://git@stash.carpages.ca/gem/gemini-loader.git"
   }
 }

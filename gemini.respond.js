@@ -1,7 +1,7 @@
 /**
  * @fileoverview
 
-A jQuery plugin that allows you to listen to when the user has changed the
+A Gemini plugin that allows you to listen to when the user has changed the
 screen size.
 
 ### Notes
@@ -14,14 +14,14 @@ screen size.
 (``small``, ``medium``, ``large``, ``xlarge``)
 
  *
- * @namespace jquery.respond
+ * @namespace gemini.respond
  * @copyright Carpages.ca 2014
  * @author Matt Rose <matt@mattrose.ca>
  *
- * @requires jquery-loader
+ * @requires gemini
  *
  * @example
-  $.respond.bind('resize', function(e, screen, windowWidth){
+  G.respond.bind('resize', function(e, screen, windowWidth){
 
     console.log('Screen: ' + screen);
     console.log('Window Width: ' + windowWidth + 'px');
@@ -29,7 +29,9 @@ screen size.
   });
  */
 
-define(['jquery-loader', 'underscore'], function($, _){
+define(['gemini'], function($){
+
+  var _ = $._;
 
   // Private settings
   var _settings = {
@@ -58,7 +60,7 @@ define(['jquery-loader', 'underscore'], function($, _){
    * Get a list of sorted breakpoints by screen size
    *
    * @method
-   * @name jquery.respond#sortedBreakpoints
+   * @name gemini.respond#sortedBreakpoints
    * @return {array} Array of sorted breakpoints by screen size
   **/
   plugin.sortedBreakpoints = function(){
@@ -78,7 +80,7 @@ define(['jquery-loader', 'underscore'], function($, _){
    * Get the screen size based on Gemini naming conventions
    *
    * @method
-   * @name jquery.respond#getScreen
+   * @name gemini.respond#getScreen
    * @return {string} Screen size
   **/
   plugin.getScreen = function(){
@@ -98,7 +100,7 @@ define(['jquery-loader', 'underscore'], function($, _){
    * Check for a certain screen size or higher
    *
    * @method
-   * @name jquery.respond#isScreen
+   * @name gemini.respond#isScreen
    * @param {string} screen Screen size
    * @return {boolean} Whether the screen is that size or larger
   **/
@@ -134,7 +136,7 @@ define(['jquery-loader', 'underscore'], function($, _){
    * Bind an event
    *
    * @method
-   * @name jquery.respond#bind
+   * @name gemini.respond#bind
    * @param {string} event The event name
    * @param {function} callback The callback fuction for the event
   **/
