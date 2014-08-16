@@ -71,7 +71,7 @@ define(['gemini'], function($){
           screen: screen
         };
       }),
-      function(bp){return bp.screen;}
+      function(bp){return bp.size;}
     );
   };
 
