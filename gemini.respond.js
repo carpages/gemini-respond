@@ -28,25 +28,26 @@ screen size.
 
   });
  */
-(function(factory) {
-  if (typeof define === 'function' && define.amd) {
+( function( factory ) {
+  if ( typeof define === 'function' && define.amd ) {
     // AMD. Register as an anonymous module.
-    define(['gemini'], factory);
-  } else if (typeof exports === 'object') {
+    define([ 'gemini' ], factory );
+  } else if ( typeof exports === 'object' ) {
     // Node/CommonJS
-    module.exports = factory(require('gemini'));
+    module.exports = factory(
+      require( 'gemini' )
+    );
   } else {
     // Browser globals
-    factory(G);
+    factory( G );
   }
-}(function($) {
-
+}( function( $ ) {
   var _ = $._;
 
   // Private settings
   var _settings = {
-    delay: 500, //Delay before events are triggered
-    minChange: 20 //Minimum difference in width for event to trigger
+    delay:     500, // Delay before events are triggered
+    minChange: 20 // Minimum difference in width for event to trigger
   };
 
   // Object to bind and trigger listeners to
@@ -60,9 +61,9 @@ screen size.
   // {project}/sass/settings.scss
   // {framewrok}/variables/defaults.scss
   plugin.breakpoints = {
-    'small': 0,
+    'small':  0,
     'medium': 600,
-    'large': 1024,
+    'large':  1024,
     'xlarge': 1280
   };
 
@@ -73,18 +74,17 @@ screen size.
    * @name gemini.respond#sortedBreakpoints
    * @return {array} Array of sorted breakpoints by screen size
   **/
-  plugin.sortedBreakpoints = function(){
+  plugin.sortedBreakpoints = function() {
     return _.sortBy(
-      _.map(plugin.breakpoints, function(size, screen){
+      _.map( plugin.breakpoints, function( size, screen ) {
         return {
-          size: size,
+          size:   size,
           screen: screen
         };
       }),
-      function(bp){return bp.size;}
+      function( bp ) { return bp.size; }
     );
   };
-
 
   /**
    * Get the screen size based on Gemini naming conventions
@@ -93,12 +93,12 @@ screen size.
    * @name gemini.respond#getScreen
    * @return {string} Screen size
   **/
-  plugin.getScreen = function(){
-    var returnScreen,
-        width = $window.width();
+  plugin.getScreen = function() {
+    var returnScreen;
+    var width = $( window ).width();
 
-    _.each(plugin.sortedBreakpoints(), function(bp){
-      if(bp.size < width){
+    _.each( plugin.sortedBreakpoints(), function( bp ) {
+      if ( bp.size < width ) {
         returnScreen = bp.screen;
       }
     });
@@ -114,32 +114,28 @@ screen size.
    * @param {string} screen Screen size
    * @return {boolean} Whether the screen is that size or larger
   **/
-  plugin.isScreen = function(screen){
-    return $window.width() >= plugin.breakpoints[screen];
+  plugin.isScreen = function( screen ) {
+    return $( window ).width() >= plugin.breakpoints[screen];
   };
 
   // Cache of the last registered width
-  var _width = $window.width();
+  var _width = $( window ).width();
 
   // Add a listener to run on resize after a set delay
-  $window.resize(_.debounce(function(){
+  $( window ).resize( _.debounce( function() {
+    var windowWidth = $( window ).width();
 
-    var windowWidth = $window.width();
-
-    //Check if the window was resized enough to trigger a change
-    if(Math.abs(_width - windowWidth) > _settings.minChange){
+    // Check if the window was resized enough to trigger a change
+    if ( Math.abs( _width - windowWidth ) > _settings.minChange ) {
       _width = windowWidth;
-      _resize(windowWidth);
+      _resize( windowWidth );
     }
-
-  }, _settings.delay));
+  }, _settings.delay ));
 
   // Function to run when the screen is resized
-  var _resize = function(windowWidth){
-
-    //Triggers the resize event
-    plugin.trigger('resize', [plugin.getScreen(), _width]);
-
+  var _resize = function( windowWidth ) {
+    // Triggers the resize event
+    plugin.trigger( 'resize', [ plugin.getScreen(), _width ]);
   };
 
   /**
@@ -150,13 +146,12 @@ screen size.
    * @param {string} event The event name
    * @param {function} callback The callback fuction for the event
   **/
-  plugin.bind = function(){
-    LISTENER.bind.apply(LISTENER, arguments);
+  plugin.bind = function() {
+    LISTENER.bind.apply( LISTENER, arguments );
   };
-  plugin.trigger = function(){
-    LISTENER.trigger.apply(LISTENER, arguments);
+  plugin.trigger = function() {
+    LISTENER.trigger.apply( LISTENER, arguments );
   };
 
   $.respond = plugin;
-
 }));
