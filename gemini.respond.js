@@ -46,7 +46,7 @@ screen size.
 
   // Private settings
   var _settings = {
-    delay:     500, // Delay before events are triggered
+    delay: 500, // Delay before events are triggered
     minChange: 20 // Minimum difference in width for event to trigger
   };
 
@@ -61,9 +61,9 @@ screen size.
   // {project}/sass/settings.scss
   // {framewrok}/variables/defaults.scss
   plugin.breakpoints = {
-    'small':  0,
+    'small': 0,
     'medium': 600,
-    'large':  1024,
+    'large': 1024,
     'xlarge': 1280
   };
 
@@ -78,7 +78,7 @@ screen size.
     return _.sortBy(
       _.map( plugin.breakpoints, function( size, screen ) {
         return {
-          size:   size,
+          size: size,
           screen: screen
         };
       }),
