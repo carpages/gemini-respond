@@ -1,18 +1,12 @@
 {
   "name": "gemini-respond",
-  "authors": [
-    {"name": "Matt Rose", "email": "matt@mattrose.ca"}
-  ],
-  "main": [
-    "gemini.respond.js"
-  ],
-  "ignore": [
-    "test"
-  ],
+  "authors": [{ "name": "Matt Rose", "email": "matt@mattrose.ca" }],
+  "main": ["gemini.respond.js"],
+  "ignore": ["test"],
   "dependencies": {
-    "gemini-loader": "~0"
+    "gemini-loader": "0.5.x"
   },
   "devDependencies": {
-    "requirejs": "~2.1.11"
+    "requirejs": "2.x"
   }
 }
